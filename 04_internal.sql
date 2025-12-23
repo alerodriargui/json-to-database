@@ -1,0 +1,27 @@
+USE hotel;
+
+CREATE TABLE COUNTRY2 LIKE COUNTRY;
+CREATE TABLE CLIENT2 LIKE CLIENT;
+CREATE TABLE ROOM2 LIKE ROOM;
+CREATE TABLE RESERVATION2 LIKE RESERVATION;
+
+DELIMITER $$
+
+CREATE PROCEDURE populate_internal()
+BEGIN
+    INSERT IGNORE INTO COUNTRY2
+    SELECT DISTINCT country, country FROM ALL_RESERVATIONS;
+
+    INSERT INTO CLIENT2(name, country_code)
+    SELECT DISTINCT nombre, country FROM ALL_RESERVATIONS;
+
+    INSERT IGNORE INTO ROOM2(room_number, price)
+    SELECT DISTINCT room, RAND()*100+50 FROM ALL_RESERVATIONS;
+
+    INSERT INTO RESERVATION2(room_number, client_id, checkin, checkout, reserv_date, pax)
+    SELECT A.room, C.client_id, A.checkin, A.checkout, A.reservdate, A.pax
+    FROM ALL_RESERVATIONS A
+    JOIN CLIENT2 C ON C.name = A.nombre;
+END$$
+
+DELIMITER ;
