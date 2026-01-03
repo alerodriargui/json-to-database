@@ -70,10 +70,10 @@ Foreign keys are used to ensure referential integrity.
 
 ### 5.1 Create Database and Tables
 
-Run in MySQL:
+Run command:
 
-```sql
-SOURCE 01_schema.sql;
+```bash
+python run_sql.py 01_schema.sql
 ```
 
 ---
@@ -96,9 +96,9 @@ python 03_external_populate.py
 
 ### 5.4 Internal Population Using Stored Procedure
 
-```sql
-SOURCE 04_internal.sql;
-CALL populate_internal();
+```bash
+python run_sql.py 04_internal.sql
+python call_proc.py
 ```
 
 ---
@@ -118,8 +118,8 @@ python 06_map_reduce.py
 python 07_room_json_external.py
 ```
 
-```sql
-SOURCE 08_room2_json_internal.sql;
+```bash
+python run_sql.py 08_room2_json_internal.sql
 ```
 
 ---

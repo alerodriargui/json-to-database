@@ -1,7 +1,7 @@
 import json
 import math
 
-with open("reservations.json") as f:
+with open("Reservations.json") as f:
     data = json.load(f)
 
 chunk_size = math.ceil(len(data) / 10)

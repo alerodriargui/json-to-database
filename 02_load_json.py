@@ -12,7 +12,7 @@ conn = mysql.connector.connect(
 )
 cur = conn.cursor()
 
-with open("reservations.json", "r") as f:
+with open("Reservations.json", "r") as f:
     data = json.load(f)
 
 for r in data:
