@@ -38,7 +38,7 @@ Exercise5/
 ├── 01_schema.sql
 ├── 02_load_json.py
 ├── 03_external_populate.py
-├── 04_internal.sql
+├── 04_internal.py
 │
 ├── 05_split_json.py
 ├── 06_map_reduce.py
@@ -97,8 +97,7 @@ python 03_external_populate.py
 ### 5.4 Internal Population Using Stored Procedure
 
 ```bash
-python run_sql.py 04_internal.sql
-python call_proc.py
+python 04_internal.py
 ```
 
 ---
